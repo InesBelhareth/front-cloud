@@ -7,7 +7,8 @@ function App() {
   const [submissions, setSubmissions] = useState([]);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
-  const apiUrl = process.env.REACT_APP_API_URL;
+  // Fallback important
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
   useEffect(() => {
     fetchData();
@@ -22,10 +23,18 @@ function App() {
       }
 
       const data = await response.json();
-      setSubmissions(data);
+
+      // sécurité si backend renvoie autre chose
+      if (Array.isArray(data)) {
+        setSubmissions(data);
+      } else {
+        console.warn("Data non valide:", data);
+        setSubmissions([]);
+      }
 
     } catch (error) {
-      console.error('Erreur lors de la récupération des données:', error);
+      console.error('Erreur récupération données:', error);
+      setSubmissions([]);
     }
   };
 
@@ -37,8 +46,13 @@ function App() {
     <div className="App">
       <div className="container">
         <h1>📋 Formulaire Simple</h1>
+
         <FormComponent onSubmit={handleFormSubmit} />
-        <DataDisplay submissions={submissions} apiUrl={apiUrl} />
+
+        <DataDisplay 
+          submissions={submissions} 
+          apiUrl={apiUrl} 
+        />
       </div>
     </div>
   );
