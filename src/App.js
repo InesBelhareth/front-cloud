@@ -8,7 +8,7 @@ function App() {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   // Fallback important
-  const apiUrl = process.env.REACT_APP_API_URL || 'http://internal-alb-backend-514255031.us-east-1.elb.amazonaws.com';
+  const apiUrl =  'http://internal-alb-backend-514255031.us-east-1.elb.amazonaws.com';
 
   useEffect(() => {
     fetchData();
@@ -16,7 +16,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`${apiUrl}/api/submissions`);
+      const response = await fetch(`http://internal-alb-backend-514255031.us-east-1.elb.amazonaws.com/api/submissions`);
 
       if (!response.ok) {
         throw new Error(`Server Error: ${response.status}`);
