@@ -8,7 +8,7 @@ function App() {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   // Fallback important
-  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://internal-alb-backend-514255031.us-east-1.elb.amazonaws.com';
 
   useEffect(() => {
     fetchData();

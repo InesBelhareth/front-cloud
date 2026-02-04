@@ -15,7 +15,7 @@ function FormComponent({ onSubmit }) {
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://internal-alb-backend-514255031.us-east-1.elb.amazonaws.com';
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
