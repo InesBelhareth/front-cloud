@@ -38,7 +38,7 @@ function App() {
       <div className="container">
         <h1>📋 Formulaire Simple</h1>
         <FormComponent onSubmit={handleFormSubmit} />
-        <DataDisplay submissions={submissions} />
+        <DataDisplay submissions={submissions} apiUrl={apiUrl} />
       </div>
     </div>
   );

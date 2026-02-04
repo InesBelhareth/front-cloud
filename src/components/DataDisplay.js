@@ -1,7 +1,7 @@
 import React from 'react';
 import './DataDisplay.css';
 
-function DataDisplay({ submissions }) {
+function DataDisplay({ submissions, apiUrl }) {
   return (
     <div className="data-display">
       <h2>📊 Données Reçues</h2>
@@ -22,7 +22,7 @@ function DataDisplay({ submissions }) {
               {submission.image && (
                 <div className="submission-image">
                   <img 
-                    src={`http://localhost:5000/${submission.image}`} 
+                    src={`${apiUrl}/${submission.image}`} 
                     alt="Uploaded" 
                   />
                 </div>
@@ -34,5 +34,6 @@ function DataDisplay({ submissions }) {
     </div>
   );
 }
+
 
 export default DataDisplay;
